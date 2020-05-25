@@ -1,0 +1,396 @@
+<!-- sudoku.html -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="application/json" href="https://cdnjs.cloudfare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="sudoku.css">
+
+    <title>Solver</title>
+  </head>
+  <body>
+  	<!-- <div class="container-fluid"> -->
+  		<!-- <div class = "sudokuBoard" >
+  			<div class = "row" align="center">
+  				<div class = 'col-sm-4 sdip'>
+  					<input class = "sdin" id = "A1" type="text">
+  					<br>
+  				</div>
+  				<div class = 'col-sm-4 sdip'>
+  					<input class = "sdin" id = "A2" type="text">
+  					<br>
+  				</div>
+  				<div class = 'col-sm-4 sdip'>
+  					<input class = "sdin" id = "A3" type="text">
+  					<br>
+  				</div>
+  				<div class = 'col-sm-4 sdip'>
+  					<input class = "sdin" id = "A4" type="text">
+  					<br>
+  				</div>
+  				<div class = 'col-sm-4 sdip'>
+  					<input class = "sdin" id = "A5" type="text">
+  					<br>
+  				</div>
+  				<div class = 'col-sm-4 sdip'>
+  					<input class = "sdin" id = "A6" type="text">
+  					<br>
+  				</div>
+  				<div class = 'col-sm-4 sdip'>
+  					<input class = "sdin" id = "A7" type="text">
+  					<br>
+  				</div>
+  				<div class = 'col-sm-4 sdip'>
+  					<input class = "sdin" id = "A8" type="text">
+  					<br>
+  				</div>
+  				<div class = 'col-sm-4 sdip'>
+  					<input class = "sdin" id = "A9" type="text">
+  					<br>
+  				</div>
+  			</div>
+  			<div class = "row" align="center">
+  				<div class = 'col-sm-4 sdip'>
+  					<input class = "sdin" id = "B1" type="text">
+  				</div>
+  				<div class = 'col-sm-4 sdip'>
+  					<input class = "sdin" id = "B2" type="text">
+  				</div>
+  				<div class = 'col-sm-4 sdip'>
+  					<input class = "sdin" id = "B3" type="text">
+  				</div>
+  				<div class = 'col-sm-4 sdip'>
+  					<input class = "sdin" id = "B4" type="text">
+  				</div>
+  				<div class = 'col-sm-4 sdip'>
+  					<input class = "sdin" id = "B5" type="text">
+  				</div>
+  				<div class = 'col-sm-4 sdip'>
+  					<input class = "sdin" id = "B6" type="text">
+  				</div>
+  				<div class = 'col-sm-4 sdip'>
+  					<input class = "sdin" id = "B7" type="text">
+  				</div>
+  				<div class = 'col-sm-4 sdip'>
+  					<input class = "sdin" id = "B8" type="text">
+  				</div>
+  				<div class = 'col-sm-4 sdip'>
+  					<input class = "sdin" id = "B9" type="text">
+  				</div>
+  			</div>	
+
+  		</div> -->
+  		<!-- <div class = "game-board"> -->
+  			<div class="container" align="center">
+  				<h1> Sudoku Solver!!</h1> 	
+  			</div>
+
+  			<div class="grid-container">
+  <div class="outer-grid">
+    <div class="outer-square">
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "A1" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "A2" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "A3" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "B1" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "B2" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "B3" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "C1" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "C2" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "C3" type="text"></div>
+      </div>
+    </div>
+  </div>
+  <div class="outer-grid">
+    <div class="outer-square">
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "A4" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "A5" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "A6" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "B4" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "B5" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "B6" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "C4" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "C5" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "C6" type="text"></div>
+      </div>
+    </div>
+  </div>
+  <div class="outer-grid">
+    <div class="outer-square">
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "A7" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "A8" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "A9" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "B7" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "B8" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "B9" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "C7" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "C8" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "C9" type="text"></div>
+      </div>
+    </div>
+  </div>
+  <div class="outer-grid">
+    <div class="outer-square">
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "D1" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "D2" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "D3" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "E1" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "E2" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "E3" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "F1" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "F2" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "F3" type="text"></div>
+      </div>
+    </div>
+  </div>
+<div class="outer-grid">
+    <div class="outer-square">
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "D4" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "D5" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "D6" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "E4" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "E5" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "E6" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "F4" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "F5" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "F6" type="text"></div>
+      </div>
+    </div>
+  </div>
+  <div class="outer-grid">
+    <div class="outer-square">
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "D7" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "D8" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "D9" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "E7" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "E8" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "E9" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "F7" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "F8" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "F9" type="text"></div>
+      </div>
+    </div>
+  </div>
+  <div class="outer-grid">
+    <div class="outer-square">
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "G1" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "G2" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "G3" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "H1" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "H2" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "H3" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "I1" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "I2" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "I3" type="text"></div>
+      </div>
+    </div>
+  </div>
+    <div class="outer-grid">
+    <div class="outer-square">
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "G4" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "G5" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "G6" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "H4" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "H5" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "H6" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "I4" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "I5" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "I6" type="text"></div>
+      </div>
+    </div>
+  </div>
+    <div class="outer-grid">
+    <div class="outer-square">
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "G7" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "G8" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "G9" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "H7" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "H8" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "H9" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "I7" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "I8" type="text"></div>
+      </div>
+      <div class="inner-grid">
+        <div class="inner-square"><input class = "sdin" id = "I9" type="text"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class = "container-fluid" align="center">
+	<button class = 'btn btn-primary solve'> Solve! </button>
+	<button class = 'btn btn-primary reset'> Clear Board </button>
+</div>
+
+    
+
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    <script src="sudoku.js"></script>
+  </body>
+</html>
+
+
